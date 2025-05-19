@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>LIFF 跳轉</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+    async function main() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectUrl = urlParams.get("redirect") || "https://www.liqui-moly-taiwan.com";
+
+      try {
+        await liff.init({ liffId: "2007212992-knvrpDVw" });
+        liff.openWindow({ url: redirectUrl, external: true });
+      } catch (err) {
+        document.body.innerHTML = "<h3>❌ 無法跳轉</h3><pre>" + err + "</pre>";
+      }
+    }
+
+    window.onload = main;
+  </script>
+</head>
+<body>
+  <p>正在開啟活動地圖...</p>
+</body>
+</html>
